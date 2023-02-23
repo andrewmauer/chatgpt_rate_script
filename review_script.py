@@ -46,4 +46,4 @@ with open('/Users/andrewmauer/Documents/Python Projects/ChatGPT API/reviews_anal
     file_writer.writerow(["email", "review text", "date", "rate"])
     for i in range(len(reviews_list)):
         file_writer.writerow([reviews_list[i][0], reviews_list[i][1], reviews_list[i][2], reviews_list[i][3]])
-    print('Analysis is over. New file "reviews_analyzed.scv" has created.')
+    print('Analysis is over. New file "reviews_analyzed.scv" has been created.')
