@@ -20,7 +20,7 @@ def answer(prompt):
         presence_penalty=0
     )
     result = ''.join(i for i in completion.choices[0].text if i.isdigit())
-    if len(result) <= 2: # Проверка на правильность информации, иногда бот выдает оценку в формате "7 out of 10", а иногда просто "7"
+    if len(result) <= 2: # Проверка на корректность информации, иногда бот выдает оценку в формате "7 out of 10", а иногда просто "7"
         return result
     elif len(result) == 3:
         return result[0:1]
@@ -30,7 +30,7 @@ def answer(prompt):
 # Context Managers
 
 # Reading unanalyzed csv file
-with open('/Users/andrewmauer/Documents/Python Projects/ChatGPT API/reviews.csv', mode='r', encoding='utf-8') as input:#, open('', 'w') as output:
+with open('/Users/andrewmauer/Documents/GitHub/chatgpt_rate_script/reviews.csv', mode='r', encoding='utf-8') as input:#, open('', 'w') as output:
     file_reader = csv.reader(input, delimiter = ",")
     count = 0
     for row in file_reader:
@@ -40,7 +40,7 @@ with open('/Users/andrewmauer/Documents/Python Projects/ChatGPT API/reviews.csv'
         count += 1
 
 # Creating analyzed csv file
-with open('/Users/andrewmauer/Documents/Python Projects/ChatGPT API/reviews_analyzed.csv', mode="w", encoding='utf-8') as output:
+with open('/Users/andrewmauer/Documents/GitHub/chatgpt_rate_script/reviews_analyzed.csv', mode="w", encoding='utf-8') as output:
     reviews_list = sorted(reviews_list, key=lambda x: x[3], reverse=True)
     file_writer = csv.writer(output, delimiter = ",", lineterminator="\r")
     file_writer.writerow(["email", "review text", "date", "rate"])
